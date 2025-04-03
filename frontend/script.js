@@ -6,14 +6,41 @@ document.getElementById("user-input").addEventListener("keydown", (event) => {
 
 document.getElementById("send-btn").addEventListener("click", sendMessage);
 
+// Function to show the bot is typing
+function showTypingIndicator() {
+  const chatDisplay = document.getElementById("chat-display");
+  const typingIndicator = document.createElement("div");
+  typingIndicator.id = "typing-indicator";
+  typingIndicator.innerHTML = `<strong>TLM:</strong> <span class="typing-animation"><span>.</span><span>.</span><span>.</span></span>`;
+  chatDisplay.appendChild(typingIndicator);
+  chatDisplay.scrollTop = chatDisplay.scrollHeight;
+}
+
+// Function to remove typing indicator
+function removeTypingIndicator() {
+  const typingIndicator = document.getElementById("typing-indicator");
+  if (typingIndicator) {
+    typingIndicator.remove();
+  }
+}
+
 function sendMessage() {
   const userInput = document.getElementById("user-input").value;
   if (userInput.trim() !== "") {
     displayMessage("Degen", userInput);
     document.getElementById("user-input").value = "";
 
+    // Show typing indicator immediately after user message
+    showTypingIndicator();
+
     fetchChatGPTResponse(userInput).then((response) => {
+      // Remove typing indicator before showing the response
+      removeTypingIndicator();
       displayMessage("TLM", response);
+    }).catch(error => {
+      // Make sure to remove typing indicator even if there's an error
+      removeTypingIndicator();
+      displayMessage("TLM", "Not very strategic of you");
     });
   }
 }

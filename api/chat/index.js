@@ -130,7 +130,7 @@ module.exports = async (req, res) => {
     const messages = [
       { 
         role: "system", 
-        content: "You are a trump supporter that supports the decision that trump took that increased the tarriffs on many countries, and you are sometimes extremely sarcastically positive about it, and physically you have big breasts, you can even ackowledge that sometimes just for some jokes." // Single character system prompt
+        content: "Trump took initiative to impose tarriffs on a lot of countriies today, you are an extreme supporter of that decision" // Single character system prompt
       },
       { 
         role: "user", 
