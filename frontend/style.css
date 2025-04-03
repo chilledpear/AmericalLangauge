@@ -10,45 +10,60 @@ html, body {
   overflow-x: hidden;
 }
 
-/* LIGHT MODE (only mode) */
+/* AMERICAN THEME */
 body {
-  background-color: #FF9900; /* Changed from #ff0000 to #FF9900 */
+  background-color: #3C3B6E; /* American flag navy blue */
   color: #333;
   cursor: url("strategist-cursor-light.png"), auto;
   position: relative;
 }
 
-/* ASCII Art Background */
+/* American flag stripes background */
 body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100'><foreignObject width='100' height='100'><div xmlns='http://www.w3.org/1999/xhtml' style='font-family: monospace; font-size: 6px; line-height: 1; color: black;'>⣿⣿⣿⣿⣿⣿⣿<br>⣿⣿⣿⣿⣿⣿⣿<br>⣿⣿⣿⣿⣿⣿⣿<br>⣿⣿⣿⣿⣿⣿⣿<br>⣿⣿⣿⣿⣿⣿⣿</div></foreignObject></svg>");
-  background-repeat: repeat;
-  pointer-events: none;
-  opacity: 0.2;
-  z-index: 0;
-}
-
-/* Adding a repeating ASCII pattern using a div */
-body::after {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: transparent;
-  background-image: 
-    repeating-linear-gradient(0deg, transparent, transparent 20px, 
-      rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 20px, 
-      rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 40px);
-  pointer-events: none;
+  background-image: linear-gradient(
+    to bottom,
+    #B22234 0px, #B22234 20px, /* Red stripe */
+    white 20px, white 40px,     /* White stripe */
+    #B22234 40px, #B22234 60px, /* Red stripe */
+    rgb(4, 0, 255) 60px, rgb(17, 0, 255) 80px,     /* White stripe */
+    #B22234 80px, #B22234 100px, /* Red stripe */
+    white 100px, white 120px,    /* White stripe */
+    #B22234 120px, #B22234 140px, /* Red stripe */
+    rgb(0, 17, 255) 140px, rgb(0, 17, 255) 160px,     /* White stripe */
+    #B22234 160px, #B22234 180px, /* Red stripe */
+    white 180px, white 200px,     /* White stripe */
+    #B22234 200px, #B22234 220px, /* Red stripe */
+    white 220px, white 240px      /* White stripe */
+  );
+  background-size: 100% 240px;
+  background-repeat: repeat;
+  opacity: 0.35; /* Increased from 0.15 */
   z-index: 0;
+  pointer-events: none;
+}
+
+/* Star pattern overlay */
+body::after {
+  content: "★";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  background-color: transparent;
+  opacity: 0.15; /* Increased from 0.05 */
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* Add the ASCII overlay */
@@ -61,8 +76,8 @@ body::after {
   overflow: hidden;
   pointer-events: none;
   z-index: 0; /* Keep below content */
-  opacity: 0.35; /* Increased visibility from 0.15 but not too much */
-  animation: moveBackground 30s linear infinite; /* Added animation */
+  opacity: 0.4; /* Increased from 0.25 */
+  /* Removed animation */
 }
 
 .ascii-row {
@@ -70,11 +85,12 @@ body::after {
   font-size: 10px; /* Increased from 8px for better visibility */
   line-height: 1;
   white-space: nowrap;
-  color: #000;
+  color: #FFFFFF; /* Changed to white for better contrast with blue background */
   font-weight: bold; /* Added for better visibility */
-  animation: shiftRow 20s linear infinite; /* Added row animation */
-  animation-delay: calc(var(--row-index, 0) * -1s); /* Different timing for each row */
+  /* Removed animations */
 }
+
+/* Removed animation keyframes */
 
 /* SLIM MENU */
 .slim-menu {
@@ -122,10 +138,10 @@ body::after {
   font-weight: bold;
   color: #ffffff;
   text-shadow: 
-    -3px -3px 0 #000000,
-     3px -3px 0 #000000,
-    -3px  3px 0 #000000,
-     3px  3px 0 #000000;
+    -3px -3px 0 #B22234, /* American flag red */
+     3px -3px 0 #B22234,
+    -3px  3px 0 #B22234,
+     3px  3px 0 #B22234;
   animation: float 3s ease-in-out infinite;
 }
 .image-text2 {
@@ -134,10 +150,10 @@ body::after {
   line-height: 1.2;
   color: #ffffff;
   text-shadow: 
-    -2px -2px 0 #000000,
-     2px -2px 0 #000000,
-    -2px  2px 0 #000000,
-     2px  2px 0 #000000;
+    -2px -2px 0 #B22234, /* American flag red */
+     2px -2px 0 #B22234,
+    -2px  2px 0 #B22234,
+     2px  2px 0 #B22234;
   animation: float 3s ease-in-out infinite;
 }
 .contract-text {
@@ -145,10 +161,10 @@ body::after {
   margin-top: 5px;
   color: #ffffff;
   text-shadow: 
-    -2px -2px 0 #000000,
-     2px -2px 0 #000000,
-    -2px  2px 0 #000000,
-     2px  2px 0 #000000;
+    -2px -2px 0 #B22234, /* American flag red */
+     2px -2px 0 #B22234,
+    -2px  2px 0 #B22234,
+     2px  2px 0 #B22234;
   animation: float 3s ease-in-out infinite;
 }
 
@@ -161,7 +177,7 @@ body::after {
   width: 100%;
   max-width: 500px;
   height: auto;
-  border: 4px solid currentColor;
+  border: 4px solid #B22234; /* American flag red border */
   border-radius: 5px;
   display: block;
   margin: 0 auto;
@@ -177,8 +193,8 @@ body::after {
   align-self: center;
   border-radius: 10px;
   padding: 20px;
-  background-color: #525252;
-  border: 3px solid #000000;
+  background-color: #FFFFFF; /* White background */
+  border: 3px solid #B22234; /* American flag red border */
   color: #333;
   animation: float 3s ease-in-out infinite;
 }
@@ -188,7 +204,8 @@ body::after {
   padding: 15px;
   margin-bottom: 15px;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #f8f8f8;
+  border: 1px solid #B22234; /* American flag red border */
 }
 .chat-display > div {
   margin-bottom: 15px;
@@ -205,10 +222,10 @@ body::after {
 #user-input {
   flex: 1;
   padding: 12px;
-  border: none;
+  border: 1px solid #B22234; /* American flag red border */
   border-radius: 5px;
   outline: none;
-  background-color: #ddd;
+  background-color: #f8f8f8;
   color: #333;
 }
 #send-btn {
@@ -217,11 +234,11 @@ body::after {
   border-radius: 5px;
   cursor: pointer;
   white-space: nowrap;
-  background-color: #ff0000;
+  background-color: #B22234; /* American flag red */
   color: #fff;
 }
 #send-btn:hover {
-  background-color: #ff0000;
+  background-color: #8B1A1A; /* Darker red on hover */
 }
 
 /* MOBILE RESPONSIVENESS */
